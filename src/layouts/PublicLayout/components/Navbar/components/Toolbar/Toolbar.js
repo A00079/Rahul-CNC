@@ -17,6 +17,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
 const styles = theme => ({
     grow: {
@@ -34,11 +35,16 @@ const styles = theme => ({
         }
     },
     title: {
-        display: "none",
+        display: "block",
         color: "#fff",
         marginLeft: 100,
+        fontFamily: 'Luckiest Guy',
+        letterSpacing: 2,
         [theme.breakpoints.up("sm")]: {
             display: "block"
+        },
+        [theme.breakpoints.down("sm")]: {
+            marginLeft: 0,
         }
     },
     navItems: {
@@ -113,8 +119,17 @@ const styles = theme => ({
 class ToolbarComponent extends React.Component {
     state = {
         achorEl: false,
-        MobileMoreAnchorEl: false
+        MobileMoreAnchorEl: false,
+        routeLocation: ''
     };
+    componentWillMount() {
+        this.setState({ routeLocation: this.props.location.pathname });
+    }
+
+    componentWillReceiveProps(props) {
+        console.log('this.props.location.pathname', props.location.pathname);
+        this.setState({ routeLocation: props.location.pathname });
+    }
 
     handleProfileMenuOpen = event => {
         this.setState({
@@ -140,6 +155,10 @@ class ToolbarComponent extends React.Component {
             mobileMoreAnchorEl: event.currentTarget
         });
     };
+    goTo(route) {
+        this.setState({ routeLocation: route });
+        this.props.history.push(route);
+    }
 
     render() {
         const { classes } = this.props;
@@ -205,9 +224,9 @@ class ToolbarComponent extends React.Component {
 
         return (
             <div className={classes.grow}>
-                <AppBar color="transparent" position="fixed">
+                <AppBar color={this.state.routeLocation !== '/' ? 'secondary' : 'transparent'} position="fixed">
                     <div className="hidden sm:block md:block lg:block 2xl:block ">
-                        <div class="rounded-full bg-yellow-400 shadow-xl border-yellow-400 border-1 absolute -top-5 -left-5 h-32 w-32 flex items-center justify-center">
+                        <div class="rounded-full bg-yellow-400 shadow-xl border-yellow-400 border-1 absolute -top-5 -left-5 h-28 w-28 flex items-center justify-center">
                             <img src="/img/cake.png" className="object-contain object-center  w-16 h-16" />
                         </div>
                     </div>
@@ -220,47 +239,47 @@ class ToolbarComponent extends React.Component {
                         >
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h6">
-                            CakesAndCards
+                        <Typography onClick={() => { this.goTo('/') }} style={{ fontFamily: 'Luckiest Guy' }} className={classes.title}>
+                            <div className="text-2xl"><span className="text-pink-400">Cakes</span>And<span className="text-yellow-400">Cards</span></div>
                         </Typography>
                         <div className={classes.navItems}>
-                            <Grid container spacing={8}>
-                                <Grid item>
-                                    <Typography className="text-white" item variant="button" display="block" gutterBottom>
+                            <Grid container spacing={3}>
+                                <Grid item onClick={() => { this.goTo('/') }}>
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className={this.state.routeLocation !== '/' ? 'hover:bg-yellow-300 hover:text-pink-400 items-center rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" item variant="subtitle1' : 'items-center rounded-md py-1 px-3 bg-yellow-300 transition duration-500 ease-in-out cursor-pointer tracking-widest text-pink-400'} variant="subtitle1" display="block" gutterBottom>
                                         Home
                                 </Typography>
                                 </Grid>
-                                <Grid item>
-                                    <Typography className="text-white" variant="button" display="block" gutterBottom>
-                                        Services
-                                </Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Typography className="text-white" variant="button" display="block" gutterBottom>
-                                        Why We
-                                </Typography>
-                                </Grid>
-                                <Grid item>
-                                    <Typography className="text-white" variant="button" display="block" gutterBottom>
+                                <Grid item onClick={() => { this.goTo('/about') }}>
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className={this.state.routeLocation == '/about' ? 'rounded-md py-1 px-3 bg-yellow-300 transition duration-500 ease-in-out cursor-pointer tracking-widest text-pink-400" item variant="subtitle1' : 'hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white'} variant="subtitle1" display="block" gutterBottom>
                                         About Us
                                 </Typography>
                                 </Grid>
-                                <Grid item>
-                                    <Typography className="text-white" variant="button" display="block" gutterBottom>
+                                <Grid item onClick={() => { this.goTo('/contact') }}>
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className={this.state.routeLocation == '/contact' ? 'rounded-md py-1 px-3 bg-yellow-300 transition duration-500 ease-in-out cursor-pointer tracking-widest text-pink-400" item variant="subtitle1' : 'hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white'} variant="subtitle1" display="block" gutterBottom>
+                                        Contact
+                                </Typography>
+                                </Grid>
+                                <Grid item onClick={() => { this.goTo('/pricing') }}>
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className={this.state.routeLocation == '/pricing' ? 'rounded-md py-1 px-3 bg-yellow-300 transition duration-500 ease-in-out cursor-pointer tracking-widest text-pink-400" item variant="subtitle1' : 'hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white'} variant="subtitle1" display="block" gutterBottom>
                                         Pricing
                                 </Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Typography className="text-white" variant="button" display="block" gutterBottom>
-                                        Contact
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
+                                        Services
+                                </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
+                                        Our Work
                                 </Typography>
                                 </Grid>
                             </Grid>
                         </div>
                         <div className={classes.grow} />
-                        <Button variant="contained" className="w-40 md:w-60 text-sm" color="secondary">
+                        <button style={{ fontFamily: 'Luckiest Guy' }} className="hidden sm:block tracking-wider rounded-md sm:bg-pink-400 py-2 w-40 md:w-72 text-white text-sm">
                             Download Now
-                        </Button>
+                        </button>
                     </Toolbar>
                 </AppBar>
                 {renderMobileMenu}
@@ -270,4 +289,4 @@ class ToolbarComponent extends React.Component {
     }
 }
 
-export default withStyles(styles)(ToolbarComponent);
+export default withRouter(withStyles(styles)(ToolbarComponent));

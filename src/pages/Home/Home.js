@@ -1,6 +1,7 @@
 import React from "react";
 import Lottie from 'react-lottie';
 import animationData from '../../../src/lotties/dance-party.json';
+import { WeOurHere, SpecialCake, HowWeWork, Banner, OurEvents } from "../HomeComponents/components";
 
 const Home = () => {
   const defaultOptions = {
@@ -15,7 +16,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <section>
-        <div class="w-full bg-cover bg-center h-screen" style={{ backgroundImage: "url(https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)" }}>
+        <div class="w-full bg-cover object-contained bg-center h-screen" style={{ backgroundImage: "url(/img/happy-birthday.jpg)" }}>
           <div class="flex items-center justify-center h-full w-full bg-gray-900 bg-opacity-50">
             <section class="text-gray-600 body-font mt-28 md:mt-14">
               <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -36,17 +37,18 @@ const Home = () => {
                   </div>
                 </div>
                 <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                  <h1 class="title-font sm:text-4xl text-2xl md:text-6xl mb-4 font-bold text-yellow-400">Bring on the cake!</h1>
-                  <p class="mb-2 md:mb-8 leading-relaxed text-white font-semibold ">Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato, hella selvage wolf narwhal dreamcatcher.</p>
-                  <p class="text-sm mt-2 text-white mb-8 w-full">Neutra shabby chic ramps, viral fixie.</p>
+                  <h1 style={{ fontFamily: 'Luckiest Guy' }} class="title-font sm:text-4xl text-3xl md:text-5xl mb-4 font-bold text-yellow-400 tracking-wider">Bring on the cake!</h1>
+                  <h1 style={{ fontFamily: 'Luckiest Guy' }} class="title-font sm:text-4xl text-md md:text-3xl mb-4 font-bold text-white tracking-widest">A party without cake is just a meeting.</h1>
+                  <p class="mb-2 md:mb-8 leading-relaxed text-sm sm:text-md text-white font-medium tracking-wider" style={{ fontFamily: 'Luckiest Guy' }}>Chillwave portland ugh, knausgaard fam polaroid iPhone. Man braid swag typewriter affogato, hella selvage wolf narwhal dreamcatcher.</p>
+                  <p class="text-sm mt-2 text-white mb-8 w-full font-medium tracking-widest" style={{ fontFamily: 'Luckiest Guy' }}>Neutra shabby chic ramps, viral fixie.</p>
                   <div class="flex lg:flex-row md:flex-col">
                     <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 512 512">
                         <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z"></path>
                       </svg>
                       <span class="ml-4 flex items-start flex-col leading-none">
-                        <span class="text-xs text-gray-600 mb-1">GET IT ON</span>
-                        <span class="title-font font-medium">Google Play</span>
+                        <span class="text-xs text-gray-600 mb-1" style={{ fontFamily: 'Luckiest Guy' }}>GET IT ON</span>
+                        <span class="title-font font-medium" style={{ fontFamily: 'Luckiest Guy' }}>Google Play</span>
                       </span>
                     </button>
                     <button class="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center lg:ml-4 md:ml-0 ml-4 md:mt-4 mt-0 lg:mt-0 hover:bg-gray-200 focus:outline-none">
@@ -55,8 +57,8 @@ const Home = () => {
                         <path d="M212.1 0c-15.76.64-34.67 10.35-45.97 23.58-9.6 11.13-19 29.68-16.52 48.38a2.5 2.5 0 002.29 2.17c1.06.08 2.15.12 3.23.12 15.41 0 32.04-8.52 43.4-22.25 11.94-14.5 17.99-33.1 16.16-49.77A2.52 2.52 0 00212.1 0z"></path>
                       </svg>
                       <span class="ml-4 flex items-start flex-col leading-none">
-                        <span class="text-xs text-gray-600 mb-1">Download on the</span>
-                        <span class="title-font font-medium">App Store</span>
+                        <span class="text-xs text-gray-600 mb-1" style={{ fontFamily: 'Luckiest Guy' }}>Download on the</span>
+                        <span class="title-font font-medium" style={{ fontFamily: 'Luckiest Guy' }}>App Store</span>
                       </span>
                     </button>
                   </div>
@@ -65,6 +67,21 @@ const Home = () => {
             </section>
           </div>
         </div>
+        <section className="we-our-here">
+          <WeOurHere />
+        </section>
+        <section className="special-cake">
+          <SpecialCake />
+        </section>
+        <section className="banner">
+          <Banner />
+        </section>
+        <section className="how-we-work">
+          <HowWeWork />
+        </section>
+        <section className="our-events">
+          <OurEvents />
+        </section>
       </section>
     </React.Fragment>
   );
