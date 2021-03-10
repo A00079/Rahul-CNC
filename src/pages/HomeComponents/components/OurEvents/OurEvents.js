@@ -3,7 +3,7 @@ import React from 'react';
 const OurEvents = () => {
     return (
         <React.Fragment>
-            <div class="py-12 bg-white mb-20">
+            <div class="py-12 bg-white mb-20" id="service">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="lg:text-left">
                         <h2 style={{ fontFamily: 'Luckiest Guy' }} class="text-base text-indigo-600 font-semibold tracking-wider uppercase">Our Services</h2>

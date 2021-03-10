@@ -18,6 +18,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const styles = theme => ({
     grow: {
@@ -122,7 +123,7 @@ class ToolbarComponent extends React.Component {
         achorEl: false,
         MobileMoreAnchorEl: false,
         routeLocation: '',
-        theposition:0
+        theposition: 0
     };
 
     componentDidMount() {
@@ -142,7 +143,7 @@ class ToolbarComponent extends React.Component {
             document.documentElement.clientHeight
 
         const scrolled = document.getElementsByTagName("html")[0].scrollTop;
-        console.log('scrolled',scrolled);
+        console.log('scrolled', scrolled);
         this.setState({
             theposition: scrolled,
         })
@@ -289,15 +290,32 @@ class ToolbarComponent extends React.Component {
                                         Pricing
                                 </Typography>
                                 </Grid>
-                                <Grid item>
-                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
-                                        Services
+
+                                <Grid item onClick={() => { this.goTo('/') }}>
+                                    <Link
+                                        to="service"
+                                        spy={true}
+                                        smooth={true}
+                                        offset={-70}
+                                        duration={500}>
+                                        <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
+                                            Services
                                 </Typography>
+                                    </Link>
                                 </Grid>
+
+
                                 <Grid item>
-                                    <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
-                                        Our Work
+                                    <Link
+                                        to="ourwork"
+                                        spy={true}
+                                        smooth={true}
+                                        offset={-70}
+                                        duration={1200}>
+                                        <Typography style={{ fontFamily: 'Luckiest Guy' }} className="hover:bg-yellow-300 hover:text-pink-400 rounded-md py-1 px-3 bg-transparent transition duration-500 ease-in-out cursor-pointer tracking-widest text-white" variant="subtitle1" variant="subtitle1" display="block" gutterBottom>
+                                            Our Work
                                 </Typography>
+                                    </Link>
                                 </Grid>
                             </Grid>
                         </div>
@@ -306,10 +324,10 @@ class ToolbarComponent extends React.Component {
                             Download Now
                         </button>
                     </Toolbar>
-                </AppBar>
-                {renderMobileMenu}
-                {renderMenu}
-            </div>
+                </AppBar >
+                { renderMobileMenu}
+                { renderMenu}
+            </div >
         );
     }
 }

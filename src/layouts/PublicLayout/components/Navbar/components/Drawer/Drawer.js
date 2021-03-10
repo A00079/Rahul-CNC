@@ -16,6 +16,7 @@ import AttachMoney from "@material-ui/icons/AttachMoney";
 import BrightnessLow from "@material-ui/icons/BrightnessLow";
 import DoubleArrow from "@material-ui/icons/DoubleArrow";
 import { withRouter } from 'react-router-dom';
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const styles = theme => ({
   list: {
@@ -30,6 +31,7 @@ class DrawerComponent extends React.Component {
   state = {
     left: false
   };
+
 
   goTo(route) {
     this.props.history.push(route);
@@ -78,19 +80,35 @@ class DrawerComponent extends React.Component {
             <ListItemText><span style={{ fontFamily: 'Luckiest Guy' }} className="text-lg text-pink-400">Pricing</span></ListItemText>
           </ListItem>
           <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <BrightnessLow className="text-yellow-400" />
-            </ListItemIcon>
-            <ListItemText><span style={{ fontFamily: 'Luckiest Guy' }} className="text-lg text-pink-400">Services</span></ListItemText>
-          </ListItem>
+          <Link
+            to="service"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            onClick={this.props.toggleDrawerHandler}
+            duration={1200}>
+            <ListItem button>
+              <ListItemIcon>
+                <BrightnessLow className="text-yellow-400" />
+              </ListItemIcon>
+              <ListItemText><span style={{ fontFamily: 'Luckiest Guy' }} className="text-lg text-pink-400">Services</span></ListItemText>
+            </ListItem>
+          </Link>
           <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <DoubleArrow className="text-yellow-400" />
-            </ListItemIcon>
-            <ListItemText><span style={{ fontFamily: 'Luckiest Guy' }} className="text-lg text-pink-400">Our Work</span></ListItemText>
-          </ListItem>
+          <Link
+            to="ourwork"
+            spy={true}
+            smooth={true}
+            offset={-70}
+            onClick={this.props.toggleDrawerHandler}
+            duration={1200}>
+            <ListItem button>
+              <ListItemIcon>
+                <DoubleArrow className="text-yellow-400" />
+              </ListItemIcon>
+              <ListItemText><span style={{ fontFamily: 'Luckiest Guy' }} className="text-lg text-pink-400">Our Work</span></ListItemText>
+            </ListItem>
+          </Link>
           <Divider />
           <ListItem button>
             <ListItemText><button style={{ fontFamily: 'Luckiest Guy' }} className="tracking-wider rounded-md bg-yellow-400 py-2 w-40 md:w-72 text-white text-sm">

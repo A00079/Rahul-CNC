@@ -1,6 +1,9 @@
 import React from 'react';
 import { MainAboutUs } from '../AboutUsComponents/components';
 const About = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     return (
         <React.Fragment>
             <section>

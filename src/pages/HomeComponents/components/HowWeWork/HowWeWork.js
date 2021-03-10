@@ -3,7 +3,7 @@ import React from 'react';
 const HowWeWork = () => {
     return (
         <React.Fragment>
-            <section class="text-gray-600 body-font">
+            <section class="text-gray-600 body-font" id="ourwork">
                 <div class="container px-5 mt-24 mx-auto">
                     <div class="flex flex-col text-center w-full">
                         <h2 style={{ fontFamily: 'Luckiest Guy' }} class="text-xs text-pink-400 tracking-widest font-bold mb-1">Our Work Process</h2>
