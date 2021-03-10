@@ -38,6 +38,7 @@ const styles = theme => ({
         display: "block",
         color: "#fff",
         marginLeft: 100,
+        cursor: 'pointer',
         fontFamily: 'Luckiest Guy',
         letterSpacing: 2,
         [theme.breakpoints.up("sm")]: {
@@ -120,8 +121,32 @@ class ToolbarComponent extends React.Component {
     state = {
         achorEl: false,
         MobileMoreAnchorEl: false,
-        routeLocation: ''
+        routeLocation: '',
+        theposition:0
     };
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.listenToScroll)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.listenToScroll)
+    }
+
+    listenToScroll = () => {
+        const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop
+
+        const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight
+
+        const scrolled = document.getElementsByTagName("html")[0].scrollTop;
+        console.log('scrolled',scrolled);
+        this.setState({
+            theposition: scrolled,
+        })
+    }
     componentWillMount() {
         this.setState({ routeLocation: this.props.location.pathname });
     }
@@ -224,7 +249,7 @@ class ToolbarComponent extends React.Component {
 
         return (
             <div className={classes.grow}>
-                <AppBar color={this.state.routeLocation !== '/' ? 'secondary' : 'transparent'} position="fixed">
+                <AppBar color={this.state.routeLocation !== '/' || this.state.theposition > 500 ? 'secondary' : 'transparent'} position="fixed">
                     <div className="hidden sm:block md:block lg:block 2xl:block ">
                         <div class="rounded-full bg-yellow-400 shadow-xl border-yellow-400 border-1 absolute -top-5 -left-5 h-28 w-28 flex items-center justify-center">
                             <img src="/img/cake.png" className="object-contain object-center  w-16 h-16" />
