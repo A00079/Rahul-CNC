@@ -252,7 +252,7 @@ class ToolbarComponent extends React.Component {
             <div className={classes.grow}>
                 <AppBar color={this.state.routeLocation !== '/' || this.state.theposition > 500 ? 'secondary' : 'transparent'} position="fixed">
                     <div className="hidden sm:block md:block lg:block 2xl:block ">
-                        <div class="rounded-full bg-yellow-400 shadow-xl border-yellow-400 border-1 absolute -top-5 -left-5 h-28 w-28 flex items-center justify-center">
+                        <div className="rounded-full bg-yellow-400 shadow-xl border-yellow-400 border-1 absolute -top-5 -left-5 h-28 w-28 flex items-center justify-center">
                             <img src="/img/cake.png" className="object-contain object-center  w-16 h-16" />
                         </div>
                     </div>
