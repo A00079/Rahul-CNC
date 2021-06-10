@@ -11,6 +11,7 @@ import Pricing from "./pages/Pricing";
 import ContactUs from "./pages/ContactUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TearmsAndConditions from "./pages/TearmsAndConditions";
+import SignIn from "./pages/SignIn";
 
 import {
   BrowserView,
@@ -57,6 +58,12 @@ const Routes = () => {
           path="/terms-and-conditions"
           layout={PublicLayout}
           component={TearmsAndConditions}
+        />
+        <WithLayoutRoute
+          exact
+          path="/sign-in"
+          layout={PublicLayout}
+          component={SignIn}
         />
         <Route path="*" component={() => "404 NOT FOUND"} />
       </Switch>

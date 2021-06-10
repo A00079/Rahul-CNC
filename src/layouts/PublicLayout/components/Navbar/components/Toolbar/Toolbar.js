@@ -320,9 +320,14 @@ class ToolbarComponent extends React.Component {
                             </Grid>
                         </div>
                         <div className={classes.grow} />
-                        <button style={{ fontFamily: 'Luckiest Guy' }} className="hidden sm:block tracking-wider rounded-md sm:bg-pink-400 py-2 w-40 md:w-72 text-white text-sm">
-                            Download Now
+                        <div className='flex flex-row justify-between items-center space-x-3'>
+                            <button onClick={() => { this.goTo('/sign-in') }} style={{ fontFamily: 'Luckiest Guy' }} className="hidden sm:block tracking-wider rounded-md sm:bg-white py-2 w-20 md:w-20 text-black text-sm">
+                                Sign In
                         </button>
+                            <button style={{ fontFamily: 'Luckiest Guy' }} className="hidden sm:block tracking-wider rounded-md sm:bg-pink-400 py-2 w-40 md:w-32 text-white text-sm">
+                                Download Now
+                        </button>
+                        </div>
                     </Toolbar>
                 </AppBar >
                 { renderMobileMenu}

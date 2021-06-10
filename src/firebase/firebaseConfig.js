@@ -18,4 +18,4 @@ firebase.initializeApp(config)
 
 const db = firebase.firestore()
 
-export { Axios, db }
+export { Axios, db, firebase }
